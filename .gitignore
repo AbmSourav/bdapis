@@ -1,4 +1,3 @@
-node-js-heroku-test/
 # Logs
 logs
 *.log
@@ -37,6 +36,9 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+
+# mongodb config
+db_config.js
 
 # Dependency directories
 node_modules/
