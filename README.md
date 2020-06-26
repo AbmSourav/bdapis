@@ -1,2 +1,2 @@
-# bdapis
+# BD API
 Rest API service

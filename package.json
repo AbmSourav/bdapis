@@ -1,0 +1,32 @@
+{
+  "name": "bdapis",
+  "version": "0.0.1",
+  "description": "rest api service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbmSourav/bdapis.git"
+  },
+  "keywords": [
+    "restapi",
+    "bd"
+  ],
+  "author": "Keramot UL Islam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbmSourav/bdapis/issues"
+  },
+  "homepage": "https://github.com/AbmSourav/bdapis#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
