@@ -1,19 +1,16 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const path = require('path')
-const db_config = require('./db_config')
-
+const express = require('express');
+const dbConnect = require('./db/connect');
 const app = express()
 
-mongoose.connect(db_config.db_config, {useNewUrlParser: true});
-mongoose.connection
-  .once( 'open', () => console.log("connected") )
-  .on( 'error', (error) => console.log(error) );
+dbConnect();
 
-app
-  .get('/', (req, res) => {
-    res.sendFile('index.html', { root: path.join(__dirname, 'public') })
-  });
+const routeNameSpace = "/api";
+const apiVersion = "/v1";
+const routePrefix = routeNameSpace + apiVersion;
+
+app.use('/', require('./routes/static/homeRoute'));
+app.use(routePrefix, require('./routes/api/v1/bdapi'));
+app.use('*', require('./routes/static/notFound'));
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

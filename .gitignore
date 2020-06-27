@@ -38,7 +38,7 @@ bower_components
 build/Release
 
 # mongodb config
-db_config.js
+db/db_config.js
 
 # Dependency directories
 node_modules/
