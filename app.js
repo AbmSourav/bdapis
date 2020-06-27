@@ -4,9 +4,9 @@ const app = express()
 
 dbConnect();
 
-const routeNameSpace = "/api";
-const apiVersion = "/v1";
-const routePrefix = routeNameSpace + apiVersion;
+const routeNameSpace = "/api"
+const apiVone = "/v1"
+const routePrefix = routeNameSpace + apiVone
 
 app.use('/', require('./routes/static/homeRoute'));
 app.use(routePrefix, require('./routes/api/v1/bdapi'));
