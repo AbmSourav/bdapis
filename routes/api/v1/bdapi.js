@@ -1,29 +1,20 @@
 const express = require('express')
-const mongoose = require('mongoose')
+const {allDivisions, allDistricts, queryByDivision} = require('./controller');
 
 const router = express.Router();
 
-const schema = new mongoose.Schema({_id: Number})  
-const dbData = mongoose.model('bdapi_data', schema, 'bdapi_data');
+const routeNameSpace = "/api"
+const apiVersionOne = "/v1"
+const routePrefix = routeNameSpace + apiVersionOne
 
-router
-    .get( '/divisions', async (req, res) => {
-        const api = await dbData.aggregate([
-            { 
-                $group: { 
-                    _id: { $toLower: "$division" }, 
-                    division: { $first: "$division" },
-                    divisionbn: { $first: "$divisionbn" } 
-                }
-            },
-            { $sort : { division : 1 } }, 
-        ]);
+// endpoint: /api/v1/divisions
+router.get( routePrefix + '/divisions', allDivisions);
 
-        try {
-            res.json({ status: { code: 200, message: "ok" }, data: api });
-        } catch (err) {
-            res.send(err);
-        }
-    });
+// endpoint: /api/v1/districts
+router.get( routePrefix + '/districts', allDistricts);
 
+// endpoint: /api/v1/division/:divisionName
+router.get( routePrefix + '/division/:divisionName', queryByDivision);
+
+// console.log(router.stack)
 module.exports = router;
