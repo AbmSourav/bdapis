@@ -1,8 +1,9 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 const db_config = require('./db_config')
 
-const dbConfig = process.env.DB_URL || db_config;
-
+const dbConfig = process.env.DBURL || db_config;
+console.log(process.env.DBURL)
 const dbConnect = () => {
     mongoose.connect(dbConfig, {useNewUrlParser: true, useUnifiedTopology: true});
     mongoose.connection
