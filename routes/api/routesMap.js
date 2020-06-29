@@ -1,4 +1,5 @@
 const express = require('express')
+const moment = require('moment')
 const VersionOneRoutes = require('../api/v1/bdapi');
 
 const router = express.Router();
@@ -16,10 +17,9 @@ const allVersions = async (req, res) => {
     allRouts.forEach((route) => {
         routes.push(routeUrl + route.route.path);
     });
-    // console.log(routes);
 
     try {
-        res.json({ status: { code: 200, message: "ok" }, versions: { v1: routes } });
+        res.json({ status: { code: 200, message: "ok", date: moment().format() }, versions: { v1: routes } });
     } catch (err) {
         res.send(err);
     }
@@ -38,10 +38,9 @@ const VersionOne = async (req, res) => {
     allRouts.forEach((route) => {
         routes.push(routeUrl + route.route.path);
     });
-    // console.log(routes);
 
     try {
-        res.json({ status: { code: 200, message: "ok" }, v1: routes });
+        res.json({ status: { code: 200, message: "ok", date: moment().format() }, v1: routes });
     } catch (err) {
         res.send(err);
     }
@@ -49,7 +48,9 @@ const VersionOne = async (req, res) => {
 
 // endpoint: /api
 router.get( '/api', allVersions);
+
 // endpoint: /api
 router.get( '/api/v1', VersionOne);
+
 
 module.exports = router;

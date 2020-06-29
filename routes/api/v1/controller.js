@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const moment = require('moment')
 const bdApiRoutes = require('./bdapi')
 
 const schema = new mongoose.Schema({_id: Number})  
@@ -10,12 +11,10 @@ const paramsCase = (param) => {
     return param.toLowerCase().replace(/^\w/, firstChr => firstChr.toUpperCase());
 }
 
-// const fullRootUrl = req.protocol + '://' + req.get('host');
-
 // print json data or error on the endpoint
 const printData = (res, apiData) => {
     try {
-        res.json({ status: { code: 200, message: "ok" }, data: apiData });
+        res.json({ status: { code: 200, message: "ok", date: moment().format() }, data: apiData });
     } catch (err) {
         res.send(err);
     }
