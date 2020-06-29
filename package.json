@@ -1,6 +1,6 @@
 {
   "name": "bdapis",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "rest api service",
   "main": "app.js",
   "scripts": {
