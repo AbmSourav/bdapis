@@ -37,6 +37,10 @@ pre {
     margin: 6px 0;
 }
 
+.wrapper {
+    overflow-x: hidden;
+}
+
 .header {
     width: 650px;
     margin: 50px auto 0;
@@ -59,6 +63,27 @@ footer {
     margin: 0 auto;
     padding: 10px 0;
     text-align: center;
+}
+
+.github-wrapper {
+    position: relative;
+}
+.github {
+    position: absolute;
+    top: 35px;
+    right: -42px;
+    border-radius: 4px;
+    transform: scale(1) rotate(45deg);
+    transition: transform .2s;
+}
+.github:hover {
+    transform: scale(1.1) rotate(45deg);
+}
+.github a {
+    background-color: #363636;
+    padding: 10px 70px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .doc {
