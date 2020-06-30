@@ -1,6 +1,6 @@
 const express = require('express')
 const moment = require('moment')
-const VersionOneRoutes = require('../api/v1/bdapi');
+const VersionOneRoutes = require('./v1.0/bdapi');
 
 const router = express.Router();
 

@@ -8,7 +8,7 @@ dbConnect();
 app.use(express.static("public"));
 app.use('/', require('./routes/static/homeRoute'));
 app.use('/', require('./routes/api/routesMap'));
-app.use('/', require('./routes/api/v1/bdapi'));
+app.use('/', require('./routes/api/v1.0/bdapi'));
 app.use('*', require('./routes/static/notFound'));
 
 const PORT = process.env.PORT || 5000
