@@ -19,7 +19,7 @@ const allVersions = async (req, res) => {
     });
 
     try {
-        res.json({ status: { code: 200, message: "ok", date: moment().format() }, versions: { v1: routes } });
+        res.json({ status: { code: 200, message: "ok", date: moment().format() }, versions: { "v1.0": routes } });
     } catch (err) {
         res.send(err);
     }
@@ -40,7 +40,7 @@ const VersionOne = async (req, res) => {
     });
 
     try {
-        res.json({ status: { code: 200, message: "ok", date: moment().format() }, v1: routes });
+        res.json({ status: { code: 200, message: "ok", date: moment().format() }, "v1.0": routes });
     } catch (err) {
         res.send(err);
     }
@@ -50,7 +50,7 @@ const VersionOne = async (req, res) => {
 router.get( '/api', allVersions);
 
 // endpoint: /api
-router.get( '/api/v1', VersionOne);
+router.get( '/api/v1.0', VersionOne);
 
 
 module.exports = router;
