@@ -3,9 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>BD API</title>
 </head>
 <body>
-    <h1>BD API</h1>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo">
+                <a href="https://bdapis.herokuapp.com/">
+                    <img src="assets/img/BDAPI.png" alt="BD API">
+                </a>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="intro">
+                <p>
+                    BD API is a RestAPI service. Developed by <a href="mailto:keramotul.islam@gmail.com?subject=BD API">Keramot UL Islam.</a><br>
+                    Divisions, Districts, Upazilla, Thana, Post Office, Post Code etc of Bangladesh are available in Bangla and English within endpoints.      
+                </p>
+                <p><strong>v1.x is a MVP</strong> of this project and also Open-source. Built with NodeJS, ExpressJS, MongoDB, Heroku. Looking for Sponsor/Investor for full project. Contact <a target="_blank" href="https://fb.me/sourav926">Here</a>.</p>
+            </div>
+
+            <div class="doc">
+                <h2 class="doc-heading">Documentation</h2>
+
+                <div class="routes">
+                    <p>Root URL: <code>https://bdapis.herokuapp.com</code></p>
+                    <p>Namespace: <code>/api</code></p>
+                    <p>Version: Version number. For Example: <code>/v1.0</code></p>
+
+                    <div class="route route-v1">
+                        <div class="route-version">
+                            <span class="route-heading">v1.x Routes</span>
+                            <span class="route-badge-sucess">available</span>
+                        </div>
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/divisions</code></div>
+                            <div class="route-sort-description">All Divisions</div>
+                            <pre>
+                                division: String
+                                divisionbn: String
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/districts</code></div>
+                            <div class="route-sort-description">All Districts</div>
+                            <pre>
+                                district: String
+                                districtbn: String
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/division/:divisionName</code></div>
+                            <div class="route-sort-description">All Districts and Upazilla of the given Division</div>
+                            <pre>
+                                district: String
+                                upazilla: array/list
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div class="route route-v2">
+                        <div class="route-version">
+                            <span class="route-heading">v2.x Routes</span>
+                            <span class="route-badge-danger">not available</span>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/division/:divisionName</code></div>
+                            <div class="route-sort-description">All Districts, Upazilla, Thana, Post Office, Post Code of the given Division</div>
+                            <pre>
+                                district: object {en: String, bn: String}
+                                upazilla: object {en: String, bn: String}
+                                thana: object {en: String, bn: String}
+                                post: object { postOffice: {en: String, bn: String}, postCode: {en: Number, bn: Number} }
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/district/:districtName</code></div>
+                            <div class="route-sort-description">All Upazilla, Thana, Post Office, Post Code of the given District</div>
+                            <pre>
+                                upazilla: object {en: String, bn: String}
+                                thana: object {en: String, bn: String}
+                                post: object { postOffice: {en: String, bn: String}, postCode: {en: Number, bn: Number} }
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/upazilla</code></div>
+                            <div class="route-sort-description">All Upazilla</div>
+                            <pre>
+                                upazilla: String
+                                upazillabn: String
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/thana</code></div>
+                            <div class="route-sort-description">All Thana</div>
+                            <pre>
+                                thana: String
+                                thanabn: String
+                            </pre>
+                        </div>
+
+                        <div class="route-detail">
+                            <div class="route-name">Route: <code>/postOffice</code></div>
+                            <div class="route-sort-description">All Post Office, Post Codes</div>
+                            <pre>
+                                postOffice: String
+                                postOfficebn: String
+                                postCode: String
+                                postCodebn: String
+                            </pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="example">
+                <h2 class="example-heading">Examples</h2>
+
+                <div class="code-wrap">
+                    <div class="example-route">
+                        Route:
+                        <code>https://bdapis.herokuapp.com/api/v1/divisions</code>
+                    </div>
+                    <pre class="example-pre">
+                        <code class="example-code">
+                            {
+                                "status": {
+                                    "code": 200,
+                                    "message": "ok",
+                                    "date": "2020-06-30T14:19:13+06:00"
+                                },
+                                "data": [
+                                    {
+                                        "_id": "barishal",
+                                        "division": "Barishal",
+                                        "divisionbn": "বরিশাল"
+                                    },
+                                    {
+                                        "_id": "chattogram",
+                                        "division": "Chattogram",
+                                        "divisionbn": "চট্টগ্রাম"
+                                    },
+                                    {
+                                        "_id": "dhaka",
+                                        "division": "Dhaka",
+                                        "divisionbn": "ঢাকা"
+                                    },
+                                    {
+                                        "_id": "khulna",
+                                        "division": "Khulna",
+                                        "divisionbn": "খুলনা"
+                                    },
+                                    {
+                                        "_id": "mymensingh",
+                                        "division": "Mymensingh",
+                                        "divisionbn": "ময়মনসিংহ"
+                                    },
+                                    {
+                                        "_id": "rajshahi",
+                                        "division": "Rajshahi",
+                                        "divisionbn": "রাজশাহী"
+                                    },
+                                    {
+                                        "_id": "rangpur",
+                                        "division": "Rangpur",
+                                        "divisionbn": "রংপুর"
+                                    },
+                                    {
+                                        "_id": "sylhet",
+                                        "division": "Sylhet",
+                                        "divisionbn": "সিলেট"
+                                    }
+                                ]
+                            }
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="code-wrap">
+                    <div class="example-route">
+                        Route:
+                        <code>https://bdapis.herokuapp.com/api/v1/division/rangpur</code>
+                    </div>
+                    <pre class="example-pre">
+                        <code class="example-code">
+                            {
+                                "status": {
+                                    "code": 200,
+                                    "message": "ok",
+                                    "date": "2020-06-30T14:55:58+06:00"
+                                },
+                                "data": [
+                                    {
+                                        "_id": "dinajpur",
+                                        "district": "Dinajpur",
+                                        "upazilla": [
+                                            "Birampur",
+                                            "Birganj",
+                                            "Biral",
+                                            "Bochaganj",
+                                            "Chirirbandar",
+                                            "Dinajpur Sadar",
+                                            "Ghoraghat",
+                                            "Hakimpur",
+                                            "Kaharole",
+                                            "Khansama",
+                                            "Nawabganj",
+                                            "Parbatipur",
+                                            "Phulbari"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "gaibandha",
+                                        "district": "Gaibandha",
+                                        "upazilla": [
+                                            "Phulchhari",
+                                            "Gaibandha Sadar",
+                                            "Gobindaganj",
+                                            "Palashbari",
+                                            "Sadullapur",
+                                            "Sughatta",
+                                            "Sundarganj"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "kurigram",
+                                        "district": "Kurigram",
+                                        "upazilla": [
+                                            "Bhurungamari",
+                                            "Char Rajibpur",
+                                            "Chilmari",
+                                            "Kurigram Sadar",
+                                            "Nageshwari",
+                                            "Phulbari",
+                                            "Rajarhat",
+                                            "Raomari",
+                                            "Ulipur"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "lalmonirhat",
+                                        "district": "Lalmonirhat",
+                                        "upazilla": [
+                                            "Aditmari",
+                                            "Hatibandha",
+                                            "Kaliganj",
+                                            "Lalmonirhat Sadar",
+                                            "Patgram"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "nilphamari",
+                                        "district": "Nilphamari",
+                                        "upazilla": [
+                                            "Dimla",
+                                            "Domar",
+                                            "Jaldhaka",
+                                            "Kishoreganj",
+                                            "Nilphamari Sadar",
+                                            "Saidpur"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "panchagarh",
+                                        "district": "Panchagarh",
+                                        "upazilla": [
+                                            "Atwari",
+                                            "Boda",
+                                            "Debiganj",
+                                            "Panchagarh Sadar",
+                                            "Tetulia"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "rangpur",
+                                        "district": "Rangpur",
+                                        "upazilla": [
+                                            "Badarganj",
+                                            "Gangachhara",
+                                            "Kaunia",
+                                            "Mithapukur",
+                                            "Pirgachha",
+                                            "Pirganj",
+                                            "Rangpur Sadar",
+                                            "Taraganj"
+                                        ]
+                                    },
+                                    {
+                                        "_id": "thakurgaon",
+                                        "district": "Thakurgaon",
+                                        "upazilla": [
+                                            "Baliadangi",
+                                            "Haripur",
+                                            "Pirganj",
+                                            "Ranisankail",
+                                            "Thakurgaon Sadar"
+                                        ]
+                                    }
+                                ]
+                            }
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2020, <a href="https://abmsourav.com">Keramot UL Islam</a> </p>
+    </footer>
+
+    <script src="https://myCDN.com/prism@v1.x/components/prism-core.min.js"></script>
+    <script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>

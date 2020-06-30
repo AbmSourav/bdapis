@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+a {
+    color: #7979ff;
+}
+a:hover {
+    color: #5e5efc;
+    text-decoration: none;
+}
+p {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+code {
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2px 3px;
+    background-color: #f2f2f2;
+}
+pre {
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    white-space: pre-line;
+    background-color: #fafafa;
+    line-height: 1.7;
+    padding: 5px 12px;
+    margin: 6px 0;
+}
+
+.header {
+    width: 650px;
+    margin: 50px auto 0;
+    text-align: center;
+}
+.logo a {
+    display: inline-block;
+}
+.logo img {
+    box-shadow: 1px 10px 15px rgba(0, 0, 0, 0.1);
+}
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: 80px auto 80px;
+}
+footer {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.doc {
+    margin: 100px 0 70px;
+}
+.doc-heading,
+.example-heading {
+    margin-bottom: 15px;
+}
+
+.route {
+    margin-top: 50px;
+}
+.route-version {
+    margin-bottom: 15px;
+}
+.route-heading {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.route-badge-sucess,
+.route-badge-danger {
+    font-size: 12px;
+    padding: 3px 5px;
+    margin-left: 5px;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+.route-badge-sucess {
+    background-color: #b9ffb9;
+}
+.route-badge-danger {
+    background-color: #ffc9c9;
+}
+
+.route-detail {
+    margin-bottom: 25px;
+}
+.route-sort-description {
+    font-size: 12px;
+    color: #797979;
+    margin-top: 5px;
+}
+
+
+.example {
+    position: relative;
+}
+.code-wrap {
+    margin-bottom: 40px;
+}
+.example-pre {
+    position: relative;
+    overflow-x: hidden;
+    height: 350px;
+    background-color: #f2f2f2;
+    white-space: pre;
+    margin-top: 10px;
+}
+.example-code {
+    font-size: 14px;
+    position: absolute;
+    left: -225px;
+    background-color: transparent;
+}
