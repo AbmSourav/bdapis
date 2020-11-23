@@ -69,12 +69,13 @@ footer {
     position: relative;
 }
 .github {
-    position: absolute;
+    position: fixed;
     top: 35px;
     right: -42px;
     border-radius: 4px;
     transform: scale(1) rotate(45deg);
-    transition: transform .2s;
+	transition: transform .2s;
+	box-shadow: 2px 12px 2px rgba(0, 0, 0, 0.43);
 }
 .github:hover {
     transform: scale(1.1) rotate(45deg);
@@ -135,6 +136,16 @@ footer {
 .example {
     position: relative;
 }
+.example-heading a,
+#js-implementation a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #ddd;
+}
+.example-heading a:hover,
+#js-implementation a:hover {
+	color: #8a8888;
+}
 .code-wrap {
     margin-bottom: 40px;
 }
@@ -151,4 +162,11 @@ footer {
     position: absolute;
     left: -225px;
     background-color: transparent;
+}
+
+.code-pen h4 {
+	margin-bottom: 12px;
+}
+.code-wrap.code-box {
+	background: #f2f2f2;
 }
