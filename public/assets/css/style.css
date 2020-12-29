@@ -42,7 +42,8 @@ pre {
 }
 
 .header {
-    width: 650px;
+	width: 650px;
+	max-width: 100%;
     margin: 50px auto 0;
     text-align: center;
 }
@@ -71,7 +72,8 @@ footer {
 .github {
     position: fixed;
     top: 35px;
-    right: -42px;
+	right: -42px;
+	z-index: 99;
     border-radius: 4px;
     transform: scale(1) rotate(45deg);
 	transition: transform .2s;
@@ -160,7 +162,8 @@ footer {
 .example-code {
     font-size: 14px;
     position: absolute;
-    left: -225px;
+	left: -225px;
+	z-index: 2;
     background-color: transparent;
 }
 
@@ -169,4 +172,11 @@ footer {
 }
 .code-wrap.code-box {
 	background: #f2f2f2;
+}
+
+
+@media (max-width: 767px) {
+	.wrapper {
+		padding: 0 10px;
+	}
 }
