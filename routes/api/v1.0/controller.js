@@ -1,10 +1,7 @@
-const express = require('express')
 const mongoose = require('mongoose')
-const moment = require('moment')
-const bdApiRoutes = require('./bdapi')
 
 const schema = new mongoose.Schema({_id: Number})  
-const dbData = mongoose.model('bdapi_data', schema, 'bdapi_data');
+const dbData = mongoose.model(process.env.COLLECTION_V1_0, schema, process.env.COLLECTION_V1_0);
 
 // params first letter upperCase
 const paramsCase = (param) => {
@@ -13,8 +10,11 @@ const paramsCase = (param) => {
 
 // print json data or error on the endpoint
 const printData = (res, apiData) => {
+	let dateTime = new Date();
+	dateTime = dateTime.toGMTString();
+
     try {
-        res.json({ status: { code: 200, message: "ok", date: moment().format() }, data: apiData });
+        res.json({ status: { code: 200, message: "ok", date: dateTime }, data: apiData });
     } catch (err) {
         res.send(err);
     }

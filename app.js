@@ -1,7 +1,10 @@
-require('dotenv').config()
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express')
 const dbConnect = require('./db/connect')
 const app = express()
+
 
 dbConnect();
 
@@ -19,4 +22,4 @@ app.use('/', require('./routes/api/v1.0/bdapi'));
 app.use('*', require('./routes/static/notFound'));
 
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => ! process.env.PORT ? console.log(`Listening on ${ PORT }`) : '' );
