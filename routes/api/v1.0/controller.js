@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({_id: Number})  
