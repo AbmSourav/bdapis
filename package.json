@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "npx nodemon app.js"
+    "dev": "npx nodemon app.js",
+    "backend": "npx nodemon backend.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "mongoose": "^5.9.20"
   },
   "devDependencies": {
+    "@abmsourav/localdb": "^1.3.0",
     "nodemon": "^2.0.4"
   }
 }
