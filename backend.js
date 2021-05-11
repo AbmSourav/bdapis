@@ -21,4 +21,4 @@ const insertData = (collection) => {
 }
 
 // insert version 1.1 data in the database
-// insertData(collectionV11);
+insertData(collectionV11);
