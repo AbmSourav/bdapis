@@ -48,49 +48,102 @@
             </div>
 
             <div class="doc">
-                <h2 class="doc-heading">Documentation</h2>
+                <h1 class="doc-heading">Documentation</h1>
 
                 <div class="routes">
-                    <p>Root URL: <code>https://bdapis.herokuapp.com</code></p>
+                    <p>Base URL: <code>https://bdapis.herokuapp.com</code></p>
                     <p>Namespace: <code>/api</code></p>
-                    <p>Version: Version number. For Example: <code>/v1.0</code></p>
+                    <p>Version: Version number. For Example: <code>/v1.1</code></p>
 
                     <div class="route route-v1">
-                        <div class="route-version">
-                            <span class="route-heading">v1.x Routes</span>
-                            <span class="route-badge-sucess">available</span>
-                        </div>
-                        <div class="route-detail">
-                            <div class="route-name">Route: <code>/divisions</code></div>
-                            <div class="route-sort-description">All Divisions</div>
-                            <pre>
-                                division: String
-                                divisionbn: String
-                            </pre>
-                        </div>
+						<h2 class="title-heading" id="routes"><a class="ref-hook" href="#routes">#</a>Rest API</h2>
 
-                        <div class="route-detail">
-                            <div class="route-name">Route: <code>/districts</code></div>
-                            <div class="route-sort-description">All Districts</div>
-                            <pre>
-                                district: String
-                                districtbn: String
-                            </pre>
-                        </div>
+						<div class="select-version-wrap">
+							<div class="route-version">
+								<h4 class="route-heading">v1.x Routes</h4>
+								<span class="route-badge-sucess">available</span>
+							</div>
 
-                        <div class="route-detail">
-                            <div class="route-name">Route: <code>/division/:divisionName</code></div>
-                            <div class="route-sort-description">All Districts and Upazilla of the given Division</div>
-                            <pre>
-                                district: String
-                                upazilla: array/list
-                            </pre>
-                        </div>
+							<div class="select-wrapper">
+								<strong class="select-label">Select Version</strong>
+								<select name="routes" id="select-route">
+									<option value="v1.0">v1.0</option>
+									<option value="v1.1" selected>v1.1 (Latest)</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="route-doc-input"></div>
+
+						<template class="route-template" data-version="v1.0">
+							<div class="route-wrapper">
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/divisions</code></div>
+									<div class="route-sort-description">All Divisions</div>
+									<pre>
+										division: String
+										divisionbn: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/districts</code></div>
+									<div class="route-sort-description">All Districts</div>
+									<pre>
+										district: String
+										districtbn: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/division/:divisionName</code></div>
+									<div class="route-sort-description">All Districts and Upazilla of the given Division</div>
+									<pre>
+										district: String
+										upazilla: array/list
+									</pre>
+								</div>
+							</div>
+						</template>
+
+						<template class="route-template" data-version="v1.1">
+							<div class="route-wrapper">
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/divisions</code></div>
+									<div class="route-sort-description">All Divisions</div>
+									<pre>
+										division: String
+										divisionbn: String
+										coordinates: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/districts</code></div>
+									<div class="route-sort-description">All Districts</div>
+									<pre>
+										district: String
+										districtbn: String
+										coordinates: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/division/:divisionName</code></div>
+									<div class="route-sort-description">All Districts and Upazilla of the given Division</div>
+									<pre>
+										district: String
+										coordinates: String
+										upazilla: array/list
+									</pre>
+								</div>
+							</div>
+						</template>
                     </div>
 
                     <div class="route route-v2">
                         <div class="route-version">
-                            <span class="route-heading">v2.x Routes</span>
+                            <h4 class="route-heading">v2.x Routes</h4>
                             <span class="route-badge-danger">not available</span>
                         </div>
 
@@ -99,6 +152,7 @@
                             <div class="route-sort-description">All Districts, Upazilla, Thana, Post Office, Post Code of the given Division</div>
                             <pre>
                                 district: object {en: String, bn: String}
+								coordinates: String
                                 upazilla: object {en: String, bn: String}
                                 thana: object {en: String, bn: String}
                                 post: object { postOffice: {en: String, bn: String}, postCode: {en: Number, bn: Number} }
@@ -149,201 +203,215 @@
             </div>
 
             <div class="example">
-                <h2 class="example-heading" id="examples">Examples <a href="#examples">#</a></h2>
+                <h2 class="title-heading" id="examples"><a class="ref-hook" href="#examples">#</a> Examples</h2>
 
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <code>https://bdapis.herokuapp.com/api/v1.0/divisions</code>
+                        <code>https://bdapis.herokuapp.com/api/v1.1/divisions</code>
                     </div>
                     <pre class="example-pre">
-                        <code class="example-code">
-                            {
-                                "status": {
-                                    "code": 200,
-                                    "message": "ok",
-                                    "date": "2020-06-30T14:19:13+06:00"
-                                },
-                                "data": [
-                                    {
-                                        "_id": "barishal",
-                                        "division": "Barishal",
-                                        "divisionbn": "বরিশাল"
-                                    },
-                                    {
-                                        "_id": "chattogram",
-                                        "division": "Chattogram",
-                                        "divisionbn": "চট্টগ্রাম"
-                                    },
-                                    {
-                                        "_id": "dhaka",
-                                        "division": "Dhaka",
-                                        "divisionbn": "ঢাকা"
-                                    },
-                                    {
-                                        "_id": "khulna",
-                                        "division": "Khulna",
-                                        "divisionbn": "খুলনা"
-                                    },
-                                    {
-                                        "_id": "mymensingh",
-                                        "division": "Mymensingh",
-                                        "divisionbn": "ময়মনসিংহ"
-                                    },
-                                    {
-                                        "_id": "rajshahi",
-                                        "division": "Rajshahi",
-                                        "divisionbn": "রাজশাহী"
-                                    },
-                                    {
-                                        "_id": "rangpur",
-                                        "division": "Rangpur",
-                                        "divisionbn": "রংপুর"
-                                    },
-                                    {
-                                        "_id": "sylhet",
-                                        "division": "Sylhet",
-                                        "divisionbn": "সিলেট"
-                                    }
-                                ]
-                            }
-                        </code>
+{
+	"status": {
+		"code": 200,
+		"message": "ok",
+		"date": "Wed, 12 May 2021 05:39:36 GMT"
+	},
+	"data": [
+		{
+			"_id": "barishal",
+			"division": "Barishal",
+			"divisionbn": "বরিশাল",
+			"coordinates": "22.3811, 90.3372"
+		},
+		{
+			"_id": "chattogram",
+			"division": "Chattogram",
+			"divisionbn": "চট্টগ্রাম",
+			"coordinates": "23.1793, 91.9882"
+		},
+		{
+			"_id": "dhaka",
+			"division": "Dhaka",
+			"divisionbn": "ঢাকা",
+			"coordinates": "23.9536, 90.1495"
+		},
+		{
+			"_id": "khulna",
+			"division": "Khulna",
+			"divisionbn": "খুলনা",
+			"coordinates": "22.8088, 89.2467"
+		},
+		{
+			"_id": "mymensingh",
+			"division": "Mymensingh",
+			"divisionbn": "ময়মনসিংহ",
+			"coordinates": "24.7136, 90.4502"
+		},
+		{
+			"_id": "rajshahi",
+			"division": "Rajshahi",
+			"divisionbn": "রাজশাহী",
+			"coordinates": "24.7106, 88.9414"
+		},
+		{
+			"_id": "rangpur",
+			"division": "Rangpur",
+			"divisionbn": "রংপুর",
+			"coordinates": "25.8483, 88.9414"
+		},
+		{
+			"_id": "sylhet",
+			"division": "Sylhet",
+			"divisionbn": "সিলেট",
+			"coordinates": "24.7050, 91.6761"
+		}
+	]
+}
                     </pre>
                 </div>
 
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <code>https://bdapis.herokuapp.com/api/v1.0/division/rangpur</code>
+                        <code>https://bdapis.herokuapp.com/api/v1.1/division/rangpur</code>
                     </div>
                     <pre class="example-pre">
-                        <code class="example-code">
-                            {
-                                "status": {
-                                    "code": 200,
-                                    "message": "ok",
-                                    "date": "2020-06-30T14:55:58+06:00"
-                                },
-                                "data": [
-                                    {
-                                        "_id": "dinajpur",
-                                        "district": "Dinajpur",
-                                        "upazilla": [
-                                            "Birampur",
-                                            "Birganj",
-                                            "Biral",
-                                            "Bochaganj",
-                                            "Chirirbandar",
-                                            "Dinajpur Sadar",
-                                            "Ghoraghat",
-                                            "Hakimpur",
-                                            "Kaharole",
-                                            "Khansama",
-                                            "Nawabganj",
-                                            "Parbatipur",
-                                            "Phulbari"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "gaibandha",
-                                        "district": "Gaibandha",
-                                        "upazilla": [
-                                            "Phulchhari",
-                                            "Gaibandha Sadar",
-                                            "Gobindaganj",
-                                            "Palashbari",
-                                            "Sadullapur",
-                                            "Sughatta",
-                                            "Sundarganj"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "kurigram",
-                                        "district": "Kurigram",
-                                        "upazilla": [
-                                            "Bhurungamari",
-                                            "Char Rajibpur",
-                                            "Chilmari",
-                                            "Kurigram Sadar",
-                                            "Nageshwari",
-                                            "Phulbari",
-                                            "Rajarhat",
-                                            "Raomari",
-                                            "Ulipur"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "lalmonirhat",
-                                        "district": "Lalmonirhat",
-                                        "upazilla": [
-                                            "Aditmari",
-                                            "Hatibandha",
-                                            "Kaliganj",
-                                            "Lalmonirhat Sadar",
-                                            "Patgram"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "nilphamari",
-                                        "district": "Nilphamari",
-                                        "upazilla": [
-                                            "Dimla",
-                                            "Domar",
-                                            "Jaldhaka",
-                                            "Kishoreganj",
-                                            "Nilphamari Sadar",
-                                            "Saidpur"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "panchagarh",
-                                        "district": "Panchagarh",
-                                        "upazilla": [
-                                            "Atwari",
-                                            "Boda",
-                                            "Debiganj",
-                                            "Panchagarh Sadar",
-                                            "Tetulia"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "rangpur",
-                                        "district": "Rangpur",
-                                        "upazilla": [
-                                            "Badarganj",
-                                            "Gangachhara",
-                                            "Kaunia",
-                                            "Mithapukur",
-                                            "Pirgachha",
-                                            "Pirganj",
-                                            "Rangpur Sadar",
-                                            "Taraganj"
-                                        ]
-                                    },
-                                    {
-                                        "_id": "thakurgaon",
-                                        "district": "Thakurgaon",
-                                        "upazilla": [
-                                            "Baliadangi",
-                                            "Haripur",
-                                            "Pirganj",
-                                            "Ranisankail",
-                                            "Thakurgaon Sadar"
-                                        ]
-                                    }
-                                ]
-                            }
-                        </code>
+{
+	"status": {
+		"code": 200,
+		"message": "ok",
+		"date": "Wed, 12 May 2021 05:48:38 GMT"
+	},
+	"data": [
+		{
+			"_id": "dinajpur",
+			"district": "Dinajpur",
+			"coordinates": "25.6279, 88.6332",
+			"upazilla": [
+				"Birampur",
+				"Birganj",
+				"Biral",
+				"Bochaganj",
+				"Chirirbandar",
+				"Dinajpur Sadar",
+				"Ghoraghat",
+				"Hakimpur",
+				"Kaharole",
+				"Khansama",
+				"Nawabganj",
+				"Parbatipur",
+				"Phulbari"
+			]
+		},
+		{
+			"_id": "gaibandha",
+			"district": "Gaibandha",
+			"coordinates": "25.3297, 89.5430",
+			"upazilla": [
+				"Phulchhari",
+				"Gaibandha Sadar",
+				"Gobindaganj",
+				"Palashbari",
+				"Sadullapur",
+				"Sughatta",
+				"Sundarganj"
+			]
+		},
+		{
+			"_id": "kurigram",
+			"district": "Kurigram",
+			"coordinates": "25.8072, 89.6295",
+			"upazilla": [
+				"Bhurungamari",
+				"Char Rajibpur",
+				"Chilmari",
+				"Kurigram Sadar",
+				"Nageshwari",
+				"Phulbari",
+				"Rajarhat",
+				"Raomari",
+				"Ulipur"
+			]
+		},
+		{
+			"_id": "lalmonirhat",
+			"district": "Lalmonirhat",
+			"coordinates": "25.9923, 89.2847",
+			"upazilla": [
+				"Aditmari",
+				"Hatibandha",
+				"Kaliganj",
+				"Lalmonirhat Sadar",
+				"Patgram"
+			]
+		},
+		{
+			"_id": "nilphamari",
+			"district": "Nilphamari",
+			"coordinates": "25.8483, 88.9414",
+			"upazilla": [
+				"Dimla",
+				"Domar",
+				"Jaldhaka",
+				"Kishoreganj",
+				"Nilphamari Sadar",
+				"Saidpur"
+			]
+		},
+		{
+			"_id": "panchagarh",
+			"district": "Panchagarh",
+			"coordinates": "26.2709, 88.5952",
+			"upazilla": [
+				"Atwari",
+				"Boda",
+				"Debiganj",
+				"Panchagarh Sadar",
+				"Tetulia"
+			]
+		},
+		{
+			"_id": "rangpur",
+			"district": "Rangpur",
+			"coordinates": "25.7468, 89.2508",
+			"upazilla": [
+				"Badarganj",
+				"Gangachhara",
+				"Kaunia",
+				"Mithapukur",
+				"Pirgachha",
+				"Pirganj",
+				"Rangpur Sadar",
+				"Taraganj"
+			]
+		},
+		{
+			"_id": "thakurgaon",
+			"district": "Thakurgaon",
+			"coordinates": "26.0418, 88.4283",
+			"upazilla": [
+				"Baliadangi",
+				"Haripur",
+				"Pirganj",
+				"Ranisankail",
+				"Thakurgaon Sadar"
+			]
+		}
+	]
+}
                     </pre>
 				</div>
 				
-				<div class="code-pen">
-					<h4 id="js-implementation">Implementation with JavaScript <a href="#js-implementation">#</a></h4>
-					<p class="codepen" data-height="470" data-theme-id="light" data-default-tab="js,result" data-user="abmsourav" data-slug-hash="WNxVrme" data-preview="true" style="height: 391px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="BD API Example">
-						<span>See the Pen <a href="https://codepen.io/abmsourav/pen/WNxVrme">
-						BD API Example</a> by Keramot UL Islam (<a href="https://codepen.io/abmsourav">@abmsourav</a>)
-						on <a href="https://codepen.io">CodePen</a>.</span>
-					</p>
+				<div class="code-implementations-wrapper">
+					<div class="code-pen">
+						<h2 id="code-implementations" class="title-heading"><a class="ref-hook" href="#code-implementation">#</a> Code Implementations</h2>
+						<p class="codepen" data-height="470" data-theme-id="light" data-default-tab="js,result" data-user="abmsourav" data-slug-hash="WNxVrme" data-preview="true" style="height: 391px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="BD API Example">
+							<span>See the Pen <a href="https://codepen.io/abmsourav/pen/WNxVrme">
+							BD API Example</a> by Keramot UL Islam (<a href="https://codepen.io/abmsourav">@abmsourav</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						</p>
+					</div>
 				</div>
             </div>
         </div>
@@ -356,5 +424,6 @@
     <!-- <script src="https://myCDN.com/prism@v1.x/components/prism-core.min.js"></script>
 	<script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script> -->
 	<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>

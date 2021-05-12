@@ -9,12 +9,29 @@ body {
     font-size: 16px;
     color: #333;
 }
+h1 {
+	font-size: 35px;
+}
+h2 {
+	font-size: 25px;
+}
 a {
     color: #7979ff;
 }
 a:hover {
     color: #5e5efc;
     text-decoration: none;
+}
+a.ref-hook {
+	font-size: 14px;
+	text-decoration: none;
+	color: #bbb;
+	position: absolute;
+    left: -18px;
+    top: 7px;
+}
+a.ref-hook:hover {
+	color: #8a8888;
 }
 p {
     margin-bottom: 10px;
@@ -32,7 +49,7 @@ pre {
     font-size: 14px;
     white-space: pre-line;
     background-color: #fafafa;
-    line-height: 1.7;
+    line-height: 1.8;
     padding: 5px 12px;
     margin: 6px 0;
 }
@@ -89,40 +106,77 @@ footer {
     text-decoration: none;
 }
 
+.title-heading {
+	position: relative;
+    margin-bottom: 30px;
+}
+
 .doc {
     margin: 100px 0 70px;
 }
-.doc-heading,
-.example-heading {
-    margin-bottom: 15px;
+.doc-heading {
+	text-align: center;
+    margin-bottom: 35px;
+}
+
+.select-version-wrap > strong {
+	margin-bottom: 10px;
+}
+.select-wrapper {
+    background-color: #f1f1f1;
+    padding: 0 0 0 15px;
+    display: inline-flex;
+    align-items: center;
+}
+.select-label {
+	font-size: 18px;
+	color: #757575;
+}
+.select-version-wrap select {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 8px 30px;
+    margin-left: 12px;
+    background-color: #e4e4e4;
+    outline: none;
+    font-size: 18px;
+    color: #757575;
+	cursor: pointer;
+}
+.select-version-wrap select:focus-visible,
+.select-version-wrap select:focus {
+	border: 1px solid #a5a5a5;
 }
 
 .route {
-    margin-top: 50px;
+    margin-top: 60px;
+}
+.route-wrapper {
+	margin-top: 30px;
 }
 .route-version {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .route-heading {
     display: inline-block;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    margin-bottom: 12px;
 }
 
 .route-badge-sucess,
 .route-badge-danger {
     font-size: 12px;
-    padding: 3px 5px;
+    padding: 4px 8px;
     margin-left: 5px;
-    border-radius: 8px;
-    text-transform: uppercase;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-weight: 500;
 }
 .route-badge-sucess {
-    background-color: #b9ffb9;
+    background-color: #95f395;
 }
 .route-badge-danger {
-    background-color: #ffc9c9;
+    background-color: #ffbbbb;
 }
 
 .route-detail {
@@ -138,35 +192,26 @@ footer {
 .example {
     position: relative;
 }
-.example-heading a,
-#js-implementation a {
-	font-size: 14px;
-	text-decoration: none;
-	color: #ddd;
-}
-.example-heading a:hover,
-#js-implementation a:hover {
-	color: #8a8888;
-}
+
 .code-wrap {
     margin-bottom: 40px;
 }
 .example-pre {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 14px;
     position: relative;
     overflow-x: hidden;
     height: 350px;
     background-color: #f2f2f2;
+	color: #505050;
     white-space: pre;
     margin-top: 10px;
-}
-.example-code {
-    font-size: 14px;
-    position: absolute;
-	left: -225px;
-	z-index: 2;
-    background-color: transparent;
+	line-height: 1.75;
 }
 
+.code-implementations-wrapper {
+	margin-top: 80px;
+}
 .code-pen h4 {
 	margin-bottom: 12px;
 }
