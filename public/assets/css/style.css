@@ -132,6 +132,66 @@ footer {
 	font-size: 18px;
 	color: #757575;
 }
+
+#select-version {
+	position: relative;
+}
+#selected-version {
+	font-size: 16px;
+	border: 1px solid #cacaca;
+    padding: 10px 35px;
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+	color: #757575;
+}
+#selected-version:before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    height: 2px;
+    width: 5px;
+    background: #333333;
+    transform: skew(0deg, 35deg);
+}
+#selected-version.show:before {
+	transform: skew(0deg, 140deg);
+}
+#selected-version:after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 11px;
+    height: 2px;
+    width: 5px;
+    background: #333333;
+    transform: skew(0deg, -35deg);
+}
+#selected-version.show:after {
+	transform: skew(0deg, -140deg);
+}
+
+#dropdown {
+    width: 160px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 2px 2px 8px 4px rgb(0 0 0 / 9%);
+    z-index: 5;
+    bottom: -100px;
+}
+#dropdown li {
+    list-style: none;
+    cursor: pointer;
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #757575;
+}
+#dropdown li:hover {
+	background-color: #eee;
+}
+
+
 .select-version-wrap select {
     border: 1px solid #cacaca;
     border-radius: 5px;
@@ -200,13 +260,15 @@ footer {
 	font-family: 'Courier New', Courier, monospace;
 	font-size: 14px;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: scroll;
     height: 350px;
     background-color: #f2f2f2;
 	color: #505050;
     white-space: pre;
     margin-top: 10px;
 	line-height: 1.75;
+	tab-size: 22px;
+	-moz-tab-size: 22px;
 }
 
 .code-implementations-wrapper {
@@ -215,13 +277,13 @@ footer {
 .code-pen h4 {
 	margin-bottom: 12px;
 }
-.code-wrap.code-box {
-	background: #f2f2f2;
-}
 
 
 @media (max-width: 767px) {
 	.wrapper {
 		padding: 0 10px;
+	}
+	.example-route pre {
+		overflow-x: scroll;
 	}
 }

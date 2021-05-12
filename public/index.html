@@ -66,10 +66,14 @@
 
 							<div class="select-wrapper">
 								<strong class="select-label">Select Version</strong>
-								<select name="routes" id="select-route">
-									<option value="v1.0">v1.0</option>
-									<option value="v1.1" selected>v1.1 (Latest)</option>
-								</select>
+								
+								<ul id="select-version">
+									<button id="selected-version">v1.1</button>
+									<div id="dropdown" style="display: none;">
+										<li class="select-version-option" data-version="v1.0">v1.0</li>
+										<li class="select-version-option" data-version="v1.1">v1.1</li>
+									</div>
+								</ul>
 							</div>
 						</div>
 
@@ -208,7 +212,7 @@
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <code>https://bdapis.herokuapp.com/api/v1.1/divisions</code>
+                        <pre>https://bdapis.herokuapp.com/api/v1.1/divisions</pre>
                     </div>
                     <pre class="example-pre">
 {
@@ -274,7 +278,7 @@
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <code>https://bdapis.herokuapp.com/api/v1.1/division/rangpur</code>
+                        <pre>https://bdapis.herokuapp.com/api/v1.1/division/rangpur</pre>
                     </div>
                     <pre class="example-pre">
 {
