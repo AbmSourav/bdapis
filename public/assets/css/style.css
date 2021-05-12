@@ -133,11 +133,11 @@ footer {
 	color: #757575;
 }
 .select-version-wrap select {
-    border: 1px solid transparent;
+    border: 1px solid #cacaca;
     border-radius: 5px;
     padding: 8px 30px;
     margin-left: 12px;
-    background-color: #e4e4e4;
+    background-color: #f1f1f1;
     outline: none;
     font-size: 18px;
     color: #757575;
@@ -145,7 +145,7 @@ footer {
 }
 .select-version-wrap select:focus-visible,
 .select-version-wrap select:focus {
-	border: 1px solid #a5a5a5;
+	border: 1px solid #a2a2a2;
 }
 
 .route {
