@@ -7,5 +7,13 @@ Looking for Sponsor/Investor for full project. Contact [Here](https://m.me/soura
 
 <br>
 
+**BD API is now also available on *Rapid API* market place.  [Click Here](https://rapidapi.com/AbmSourav/api/bdapi)**
+
+<br>
+
 ## Documentation: 
 [BD API](https://bdapis.herokuapp.com)
+
+<br>
+
+.
