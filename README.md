@@ -1,4 +1,6 @@
-![BD API](https://github.com/AbmSourav/bdapis/blob/master/views/assets/img/BDAPI.png)
+<p align="center">
+  <img src="https://github.com/AbmSourav/bdapis/blob/master/views/assets/img/BDAPI.png" alt="BD API" title="BD API" />
+</p>
 
 <br>
 
