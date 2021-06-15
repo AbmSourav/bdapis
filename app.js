@@ -13,7 +13,8 @@ const corsOptions = function(req, res, next) {
     next();
 }
 
-app.use(express.static("public"));
+app.set('view engine', 'ejs');
+app.use(express.static("views"));
 app.use('/', require('./routes/static/homeRoute'));
 
 app.use('/', corsOptions);

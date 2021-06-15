@@ -25,6 +25,7 @@
   "homepage": "https://github.com/AbmSourav/bdapis#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "moment": "^2.27.0",
     "mongoose": "^5.9.20"
