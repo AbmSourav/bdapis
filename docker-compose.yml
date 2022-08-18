@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    nodejs-app:
+        build:
+          context: ./bdapi_app
+        container_name: bdapi
+        hostname: bdapi
+        ports:
+            - "3000:3000" 
+        networks:
+            - bdapi-net
+
+        depends_on:
+            - mongo
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes:
+            - ./data:/data/db
+        ports:
+            - "27017:27017" 
+        networks:
+            - bdapi-net 
+    nginx:
+        build:
+          context: ./nginx
+        container_name: nginx
+        hostname: nginx
+        ports:
+            - "80:80" 
+        depends_on:
+            - nodejs-app
+        networks:
+            - dbapi-net
+
+networks:
+  example-net:
+    external: true
