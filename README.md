@@ -19,5 +19,15 @@ Looking for Sponsor/Investor for full project. Contact [Here](https://m.me/soura
 Documentation website is [here](https://bdapis.com/)
 
 <br>
+<br>
 
-.
+## Contribution environment setup
+
+**With Docker**
+<br>
+You need to have install Docker & Docker compose. 
+* Create `.env` file from `.env-example`
+* Please contact with maintainer for MongoDB credentials.
+* Add the creadential in `.env` files `DBURL`
+* Then run `docker-compose up -d --build`
+* To watch file changes, change the value of `PORT` in the `app.js`, then run `docker-compose exec app npm run dev`

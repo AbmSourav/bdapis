@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    app:
+        build: .
+        container_name: bdapi
+        restart: always
+        ports:
+            - $APP_PORT:3000
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        depends_on:
+            - mongo
+        environment:
+            - PORT=3000
+            - DBURL=$DBURL
+            - COLLECTION_V1_0=$COLLECTION_V1_0
+            - COLLECTION_V1_1=$COLLECTION_V1_1
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes:
+            - ./backup_db:/data/db
+        ports:
+            - $DB_PORT:27017
