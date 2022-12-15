@@ -1,18 +1,14 @@
- FROM node:latest
+FROM node:latest
 
- RUN mkdir -p /app
- WORKDIR /app
- #/usr/src/app
- COPY package.json /app
- RUN npm install
+RUN mkdir -p /app
+WORKDIR /app
 
- COPY . /app
+COPY package*.json ./
+RUN npm install
 
- EXPOSE 3000
+COPY . .
+RUN chmod -R 777 ./
 
- ENTRYPOINT ["node"]
+EXPOSE 3000
 
- CMD ["app.js"]
-
- FROM nginx
-COPY ./default.conf /etc/nginx/conf.d/
+CMD ["npm", "start"]

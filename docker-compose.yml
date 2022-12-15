@@ -1,39 +1,26 @@
 version: '3'
 
 services:
-    nodejs-app:
-        build:
-          context: ./bdapi_app
+    app:
+        build: .
         container_name: bdapi
-        hostname: bdapi
+        restart: always
         ports:
-            - "3000:3000" 
-        networks:
-            - bdapi-net
-
+            - $APP_PORT:3000
+        volumes:
+            - ./:/app
+            - /app/node_modules
         depends_on:
             - mongo
+        environment:
+            - PORT=3000
+            - DBURL=$DBURL
+            - COLLECTION_V1_0=$COLLECTION_V1_0
+            - COLLECTION_V1_1=$COLLECTION_V1_1
     mongo:
         container_name: mongo
         image: mongo
         volumes:
-            - ./data:/data/db
+            - ./backup_db:/data/db
         ports:
-            - "27017:27017" 
-        networks:
-            - bdapi-net 
-    nginx:
-        build:
-          context: ./nginx
-        container_name: nginx
-        hostname: nginx
-        ports:
-            - "80:80" 
-        depends_on:
-            - nodejs-app
-        networks:
-            - dbapi-net
-
-networks:
-  example-net:
-    external: true
+            - $DB_PORT:27017

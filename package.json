@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "npx nodemon app.js",
-    "backend": "npx nodemon backend.js"
+    "dev": "nodemon app.js",
+    "backend": "nodemon backend.js"
   },
   "repository": {
     "type": "git",
