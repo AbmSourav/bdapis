@@ -16,7 +16,7 @@ Looking for Sponsor/Investor for full project. Contact [Here](https://m.me/soura
 <br>
 
 ## Documentation: 
-[BD API](https://bdapis.herokuapp.com)
+Documentation website is [here](https://bdapis.com/)
 
 <br>
 <br>

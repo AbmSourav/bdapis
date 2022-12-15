@@ -88,20 +88,21 @@ footer {
 }
 .github {
     position: fixed;
-    top: 35px;
+    top: 20px;
 	right: -42px;
 	z-index: 99;
     border-radius: 4px;
     transform: scale(1) rotate(45deg);
 	transition: transform .2s;
-	box-shadow: 2px 12px 2px rgba(0, 0, 0, 0.43);
+	box-shadow: 3px 6px 25px 8px rgba(0, 0, 0, 0.30);
 }
 .github:hover {
     transform: scale(1.1) rotate(45deg);
 }
 .github a {
+    display: flex;
     background-color: #363636;
-    padding: 10px 70px;
+    padding: 5px 70px;
     color: #fff;
     text-decoration: none;
 }
@@ -206,6 +207,14 @@ footer {
 .select-version-wrap select:focus-visible,
 .select-version-wrap select:focus {
 	border: 1px solid #a2a2a2;
+}
+
+.routes .base-url-notice {
+    font-size: 9px;
+    font-weight: 500;
+    padding: 5px;
+    background-color: #fffcdd;
+    color: #939393;
 }
 
 .route {

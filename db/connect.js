@@ -5,9 +5,10 @@ const mongoose = require('mongoose')
 const dbConfig = process.env.DBURL;
 
 const dbConnect = () => {
-    mongoose.connect(dbConfig, {useNewUrlParser: true, useUnifiedTopology: true});
+    mongoose.connect(dbConfig, {useNewUrlParser: true, useUnifiedTopology: true})
+        .catch(error => console.log("MongoDB connection failed.", error));
     mongoose.connection
-        .once( 'open', () => console.log("connected") )
+        .once( 'open', () => console.log("MongoDB connected..") )
         .on( 'error', error => console.log('error') );
 }
 
