@@ -8,6 +8,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     color: #333;
+    overflow-x: hidden;
 }
 h1 {
 	font-size: 35px;
@@ -16,10 +17,10 @@ h2 {
 	font-size: 25px;
 }
 a {
-    color: #7979ff;
+    color: #267c30;
 }
 a:hover {
-    color: #5e5efc;
+    color: #4eb05a;
     text-decoration: none;
 }
 a.ref-hook {
@@ -74,13 +75,6 @@ pre {
     width: 100%;
     max-width: 650px;
     margin: 80px auto 80px;
-}
-footer {
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 10px 0;
-    text-align: center;
 }
 
 .github-wrapper {
@@ -285,6 +279,42 @@ footer {
 }
 .code-pen h4 {
 	margin-bottom: 12px;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #dbdbdb;
+    /* color: #fff; */
+}
+.sponsor {
+    padding: 20px 20px 50px;
+    margin: 40px 0;
+}
+.sponsor h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    letter-spacing: 15px;
+    background: #ebebeb;
+    display: inline-block;
+    padding: 0px 15px;
+    border-radius: 5px;
+}
+.sponsor-list img {
+    width: 135px;
+}
+footer .author {
+    color: #333;
+    font-weight: 500;
+}
+footer .author:hover {
+    color: #4eb05a;
+}
+footer .copyright {
+    margin-bottom: 25px;
 }
 
 
