@@ -16,7 +16,12 @@ const printData = (res, apiData) => {
 	dateTime = dateTime.toGMTString('en-US', { timeZone: 'Asia/Dhaka' });
 
     try {
-        res.json({ status: { code: 200, message: "ok", date: dateTime }, data: apiData });
+        res.json({ status: {
+            code: 200,
+            message: "ok",
+            date: dateTime,
+            notice: "v1.0 is depricated, please use v1.2. v1.0 will be removed soon."
+        }, data: apiData });
     } catch (err) {
         res.send(err);
     }
