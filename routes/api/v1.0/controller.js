@@ -13,7 +13,7 @@ const paramsCase = (param) => {
 // print json data or error on the endpoint
 const printData = (res, apiData) => {
 	let dateTime = new Date();
-	dateTime = dateTime.toGMTString();
+	dateTime = dateTime.toGMTString('en-US', { timeZone: 'Asia/Dhaka' });
 
     try {
         res.json({ status: { code: 200, message: "ok", date: dateTime }, data: apiData });
