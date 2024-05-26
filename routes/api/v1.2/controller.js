@@ -129,7 +129,7 @@ const queryByDistrict = async (req, res) => {
     })
 
     let districts = data[0] || false;
-    if (districts.upazillas.length) {
+    if (districts.upazillas && districts.upazillas.length) {
         districts.upazillas.map((upazilla, index) => {
             districts.upazillas[index] = upazilla.upazilla
         })
