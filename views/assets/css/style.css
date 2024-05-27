@@ -55,6 +55,20 @@ pre {
     margin: 6px 0;
 }
 
+
+.notice {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff8b8;
+    padding: 5px 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, .15);
+}
+
 .wrapper {
     overflow-x: hidden;
 }
@@ -62,7 +76,7 @@ pre {
 .header {
 	width: 650px;
 	max-width: 100%;
-    margin: 50px auto 0;
+    margin: 70px auto 0;
     text-align: center;
 }
 .logo a {
