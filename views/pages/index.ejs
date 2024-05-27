@@ -73,10 +73,10 @@
 
                 <div class="routes">
                     <p>
-						Base URL: <code>https://bdapis.com/</code>
+						Base URL: <code>https://bdapis.com</code>
 					</p>
                     <p>Namespace: <code>/api</code></p>
-                    <p>Version: Version number. For Example: <code>/v1.1</code></p>
+                    <p>API Version: <code>/v1.2</code></p>
 
                     <div class="route route-v1">
 						<h2 class="title-heading" id="routes"><a class="ref-hook" href="#routes">#</a>Rest API</h2>
@@ -91,10 +91,11 @@
 								<strong class="select-label">Select Version</strong>
 								
 								<ul id="select-version">
-									<button id="selected-version">v1.1</button>
+									<button id="selected-version">v1.2</button>
 									<div id="dropdown" style="display: none;">
-										<li class="select-version-option" data-version="v1.0">v1.0</li>
-										<li class="select-version-option" data-version="v1.1">v1.1</li>
+										<li class="select-version-option" data-version="v1.2">v1.2</li>
+										<li class="select-version-option" data-version="v1.1">v1.1 [Depricated]</li>
+										<li class="select-version-option" data-version="v1.0">v1.0 [Depricated]</li>
 									</div>
 								</ul>
 							</div>
@@ -134,6 +135,40 @@
 						</template>
 
 						<template class="route-template" data-version="v1.1">
+							<div class="route-wrapper">
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/divisions</code></div>
+									<div class="route-sort-description">All Divisions</div>
+									<pre>
+										division: String
+										divisionbn: String
+										coordinates: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/districts</code></div>
+									<div class="route-sort-description">All Districts</div>
+									<pre>
+										district: String
+										districtbn: String
+										coordinates: String
+									</pre>
+								</div>
+		
+								<div class="route-detail">
+									<div class="route-name">Route: <code>/division/:divisionName</code></div>
+									<div class="route-sort-description">All Districts and Upazilla of the given Division</div>
+									<pre>
+										district: String
+										coordinates: String
+										upazilla: array/list
+									</pre>
+								</div>
+							</div>
+						</template>
+
+						<template class="route-template" data-version="v1.2">
 							<div class="route-wrapper">
 								<div class="route-detail">
 									<div class="route-name">Route: <code>/divisions</code></div>
@@ -243,7 +278,7 @@
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <pre>https://bdapis.com/api/v1.1/divisions</pre>
+                        <pre>https://bdapis.com/api/v1.2/divisions</pre>
                     </div>
                     <pre class="example-pre">
 						<%= allDivisions %>
@@ -253,7 +288,7 @@
                 <div class="code-wrap">
                     <div class="example-route">
                         Route:
-                        <pre>https://bdapis.com/api/v1.1/division/rangpur</pre>
+                        <pre>https://bdapis.com/api/v1.2/division/rangpur</pre>
                     </div>
                     <pre class="example-pre">
 						<%= divisionDetails %>
