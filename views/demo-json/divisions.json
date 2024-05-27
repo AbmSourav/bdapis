@@ -7,13 +7,11 @@
 	},
 	"data": [
 		{
-			"_id": "barishal",
 			"division": "Barishal",
 			"divisionbn": "বরিশাল",
 			"coordinates": "22.3811, 90.3372"
 		},
 		{
-			"_id": "chattogram",
 			"division": "Chattogram",
 			"divisionbn": "চট্টগ্রাম",
 			"coordinates": "23.1793, 91.9882"

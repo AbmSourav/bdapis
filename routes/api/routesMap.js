@@ -2,6 +2,7 @@ const express = require('express')
 const moment = require('moment')
 const Version10Routes = require('./v1.0/bdapi');
 const Version11Routes = require('./v1.1/bdapi');
+const Version12Routes = require('./v1.2/bdapi');
 
 const router = express.Router();
 
@@ -49,10 +50,12 @@ const allVersions = async (req, res) => {
 
     const v10Stack = await Version10Routes.stack;
 	const v11Stack = await Version11Routes.stack;
+	const v12Stack = await Version12Routes.stack;
 	const v10Routes = getVersionRoutes(routeUrl, v10Stack, 'v1.0');
 	const v11Routes = getVersionRoutes(routeUrl, v11Stack, 'v1.1');
+	const v12Routes = getVersionRoutes(routeUrl, v12Stack, 'v1.2');
 
-	printData(res, [ v10Routes, v11Routes ]);
+	printData(res, [ v10Routes, v11Routes, v12Routes ]);
 }
 
 /**
@@ -85,12 +88,28 @@ const version10 = async (req, res) => {
 	printData(res, v11Routes);
 }
 
+/**
+ * callback function for `/v1.2`
+ * 
+ * @param req request object
+ * @param res response object
+ */
+const version12 = async (req, res) => {
+    const baseUrl = req.protocol + '://' + req.get('host');
+
+    const v12Stack = await Version12Routes.stack;
+	const v12Routes = getVersionRoutes(baseUrl, v12Stack, 'v1.2');
+
+	printData(res, v12Routes);
+}
+
 // endpoint: /api
 router.get( '/api', allVersions);
 
-// endpoint: /api
+// endpoint: /api/{version}
 router.get( '/api/v1.0', version10);
 router.get( '/api/v1.1', version11);
+router.get( '/api/v1.2', version12);
 
 
 module.exports = router;

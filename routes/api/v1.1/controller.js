@@ -17,7 +17,12 @@ const printData = (res, apiData) => {
 	let dateTime = new Date();
 	dateTime = dateTime.toGMTString();
 
-	response['status'] = { code: 200, message: "ok", date: dateTime };
+	response['status'] = {
+        code: 200,
+        message: "ok",
+        date: dateTime,
+        notice: "v1.1 is depricated, please use v1.2. v1.1 will be removed soon."
+    };
 	response['data'] = apiData;
 
     try {

@@ -7,7 +7,6 @@
 	},
 	"data": [
 		{
-			"_id": "dinajpur",
 			"district": "Dinajpur",
 			"coordinates": "25.6279, 88.6332",
 			"upazilla": [
@@ -27,7 +26,6 @@
 			]
 		},
 		{
-			"_id": "gaibandha",
 			"district": "Gaibandha",
 			"coordinates": "25.3297, 89.5430",
 			"upazilla": [
@@ -41,7 +39,7 @@
 			]
 		},
 		{
-			"...": "You get the idea..."
+			"...": "You get the idea. There are 64 districts in total."
 		}
 	]
 }

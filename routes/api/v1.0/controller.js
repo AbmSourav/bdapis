@@ -13,10 +13,15 @@ const paramsCase = (param) => {
 // print json data or error on the endpoint
 const printData = (res, apiData) => {
 	let dateTime = new Date();
-	dateTime = dateTime.toGMTString();
+	dateTime = dateTime.toGMTString('en-US', { timeZone: 'Asia/Dhaka' });
 
     try {
-        res.json({ status: { code: 200, message: "ok", date: dateTime }, data: apiData });
+        res.json({ status: {
+            code: 200,
+            message: "ok",
+            date: dateTime,
+            notice: "v1.0 is depricated, please use v1.2. v1.0 will be removed soon."
+        }, data: apiData });
     } catch (err) {
         res.send(err);
     }

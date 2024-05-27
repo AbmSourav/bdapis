@@ -1,5 +1,8 @@
 backup_db
 
+prisma/dev.db
+dataProcessor/resource.json
+
 # Logs
 logs
 *.log

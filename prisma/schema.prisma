@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Divisions {
+  id          Int         @id @default(autoincrement())
+  divisionbn  String
+  division    String
+  coordinates String
+  districts   Districts[]
+}
+
+model Districts {
+  id          Int         @id @default(autoincrement())
+  division_id Int
+  districtbn  String
+  district    String
+  coordinates String
+  division    Divisions   @relation(fields: [division_id], references: [id])
+  upazillas   Upazillas[]
+}
+
+model Upazillas {
+  id          Int       @id @default(autoincrement())
+  district_id Int
+  upazillabn  String
+  upazilla    String
+  district    Districts @relation(fields: [district_id], references: [id])
+}
