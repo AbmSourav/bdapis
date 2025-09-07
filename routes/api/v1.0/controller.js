@@ -1,9 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const mongoose = require('mongoose')
+const { PrismaClient } = require('@prisma/client');
 
-const schema = new mongoose.Schema({_id: Number})  
-const dbData = mongoose.model(process.env.COLLECTION_V1_0, schema, process.env.COLLECTION_V1_0);
+const prisma = new PrismaClient();
 
 // params first letter upperCase
 const paramsCase = (param) => {
@@ -33,16 +32,15 @@ const printData = (res, apiData) => {
  * division: string, divisionbn: string
  */
 const allDivisions = async (req, res) => {
-    const data = await dbData.aggregate([
-        { 
-            $group: { 
-                _id: { $toLower: "$division" }, 
-                division: { $first: "$division" },
-                divisionbn: { $first: "$divisionbn" } 
-            }
+    const data = await prisma.divisions.findMany({
+        select: {
+            division: true,
+            divisionbn: true
         },
-        { $sort : { division : 1 } }, 
-    ]);
+        orderBy: {
+            division: 'asc'
+        }
+    });
 
     printData(res, data);
 }
@@ -53,16 +51,15 @@ const allDivisions = async (req, res) => {
  * district: string, districtbn: string
  */
 const allDistricts = async (req, res) => {
-    const data = await dbData.aggregate([
-        { 
-            $group: { 
-                _id: { $toLower: "$district" }, 
-                district: { $first: "$district" },
-                districtbn: { $first: "$districtbn" }
-            } 
+    const data = await prisma.districts.findMany({
+        select: {
+            district: true,
+            districtbn: true
         },
-        { $sort : { district : 1 } },
-    ]);
+        orderBy: {
+            district: 'asc'
+        }
+    });
 
     printData(res, data);
 }
@@ -75,21 +72,32 @@ const allDistricts = async (req, res) => {
 const queryByDivision = async (req, res) => {
     const divisionName = paramsCase(req.params.divisionName);
 
-    const data = await dbData.aggregate([
-        {
-            $match: { division: divisionName }
+    const data = await prisma.districts.findMany({
+        where: {
+            division: {
+                division: divisionName
+            }
         },
-        { 
-            $group: { 
-                _id: { $toLower: "$district" },
-                district: { $first: "$district" },
-                upazilla: { $push: "$upazilla" }
-            } 
+        select: {
+            district: true,
+            upazillas: {
+                select: {
+                    upazilla: true
+                }
+            }
         },
-        { $sort : { district : 1 } }
-    ]);
+        orderBy: {
+            district: 'asc'
+        }
+    });
 
-    printData(res, data);
+    // Transform data to match the expected format
+    const transformedData = data.map(district => ({
+        district: district.district,
+        upazilla: district.upazillas.map(u => u.upazilla)
+    }));
+
+    printData(res, transformedData);
 }
 
 module.exports = {allDivisions, allDistricts, queryByDivision}

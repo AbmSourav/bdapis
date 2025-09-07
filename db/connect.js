@@ -1,15 +1,27 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const mongoose = require('mongoose')
+const { PrismaClient } = require('@prisma/client');
 
-const dbConfig = process.env.DBURL;
+let prisma;
 
 const dbConnect = () => {
-    mongoose.connect(dbConfig, {useNewUrlParser: true, useUnifiedTopology: true})
-        .catch(error => console.log("MongoDB connection failed.", error));
-    mongoose.connection
-        .once( 'open', () => console.log("MongoDB connected..") )
-        .on( 'error', error => console.log('error') );
+    try {
+        if (!prisma) {
+            prisma = new PrismaClient();
+        }
+        console.log("SQLite database connected via Prisma..");
+        return prisma;
+    } catch (error) {
+        console.log("SQLite connection failed.", error);
+        throw error;
+    }
 }
 
-module.exports = dbConnect
+const getPrismaClient = () => {
+    if (!prisma) {
+        prisma = new PrismaClient();
+    }
+    return prisma;
+}
+
+module.exports = { dbConnect, getPrismaClient }

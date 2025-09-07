@@ -28,7 +28,6 @@ model Districts {
 model Upazillas {
   id          Int       @id @default(autoincrement())
   district_id Int
-  upazillabn  String
   upazilla    String
   district    Districts @relation(fields: [district_id], references: [id])
 }

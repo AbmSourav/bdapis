@@ -1,14 +1,23 @@
-const { PrismaClient, Prisma } = require("@prisma/client");
-const { parseUpazillaData } = require("../parsers/upazilla");
+const { PrismaClient } = require("@prisma/client");
+const { seedUpazillaData } = require("../seeders/upazilla");
 
 const prisma = new PrismaClient()
 
 async function main() {
-    parseUpazillaData.then(async (data) => {
-        await prisma.Upazillas.createMany({
-            "data": data
-        })
+    // Check if upazillas already exist
+    const existingCount = await prisma.upazillas.count();
+    
+    if (existingCount > 0) {
+        console.log(`Upazillas already exist (${existingCount} records). Skipping migration.`);
+        return;
+    }
+    
+    const upazillaData = await seedUpazillaData();
+    await prisma.Upazillas.createMany({
+        "data": upazillaData
     })
+    
+    console.log(`Successfully inserted ${upazillaData.length} upazillas.`);
 }
 
 main()
