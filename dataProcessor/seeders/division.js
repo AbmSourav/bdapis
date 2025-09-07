@@ -33,8 +33,4 @@ function seedDivisionData() {
     return result;
 }
 
-<<<<<<< HEAD
-=======
-console.log(seedDivisionData());
->>>>>>> 92a712d (sqllite implemented)
 exports.seedDivisionData = seedDivisionData;
