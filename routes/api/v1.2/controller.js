@@ -7,18 +7,41 @@ const prisma = new PrismaClient();
 
 // params first letter upperCase
 const paramsCase = (param) => {
+    const paramLength = param.split(" ").length;
+
+    if (paramLength > 1) {
+        return param.replace(/^\w/, firstChr => firstChr.toUpperCase());
+    }
+
     return param.toLowerCase().replace(/^\w/, firstChr => firstChr.toUpperCase());
 }
 
 // print json data or error on the endpoint
 const printData = (res, apiData) => {
-	const response = {};
+	const response = {
+        status: {},
+        data: [],
+    };
 
 	let dateTime = new Date();
-	dateTime = dateTime.toGMTString();
+	dateTime = dateTime.toLocaleString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true, 
+        timeZone: 'Asia/Dhaka'
+    });
 
-	response['status'] = { code: 200, message: "ok", date: dateTime };
-	response['data'] = apiData;
+    response['data'] = apiData;
+    if (! apiData || apiData.length == 0) {
+        response['status'] = { code: 404, message: "not found", date: dateTime };
+    } else {
+        response['status'] = { code: 200, message: "ok", date: dateTime };
+    }
 
     try {
         res.json(response);
@@ -130,7 +153,7 @@ const queryByDistrict = async (req, res) => {
         })
     }
 
-    printData(res, districts);
+    printData(res, data);
 }
 
 module.exports = {allDivisions, allDistricts, queryByDivision, queryByDistrict}

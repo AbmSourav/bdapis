@@ -1,8 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient()
 
 function seedDivisionData() {
     const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resource/v1.1.json'), 'utf8'));
@@ -36,5 +33,4 @@ function seedDivisionData() {
     return result;
 }
 
-console.log(seedDivisionData());
 exports.seedDivisionData = seedDivisionData;
