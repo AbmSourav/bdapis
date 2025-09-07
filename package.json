@@ -4,7 +4,8 @@
   "description": "rest api service",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:security": "bash scripts/security-test.sh",
+    "test:request-rate-limit": "node scripts/request-rate-limit-test.js",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "backend": "nodemon backend.js",
@@ -36,6 +37,8 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-rate-limit": "^6.11.2",
+    "helmet": "^6.2.0",
     "moment": "^2.27.0"
   },
   "devDependencies": {
