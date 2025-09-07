@@ -1,11 +1,9 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const mongoose = require('mongoose')
-
 const { PrismaClient } = require("@prisma/client");
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 // params first letter upperCase
 const paramsCase = (param) => {

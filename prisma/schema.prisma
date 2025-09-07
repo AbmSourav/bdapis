@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 model Divisions {
@@ -28,7 +28,6 @@ model Districts {
 model Upazillas {
   id          Int       @id @default(autoincrement())
   district_id Int
-  upazillabn  String
   upazilla    String
   district    Districts @relation(fields: [district_id], references: [id])
 }

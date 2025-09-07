@@ -1,11 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const { PrismaClient } = require("@prisma/client");
 
-const prisma = new PrismaClient()
-
-function parseDivisionData() {
-    const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resource.json'), 'utf8'));
+function seedDivisionData() {
+    const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resource/v1.1.json'), 'utf8'));
     const result = [];
     const division_name_list = [];
 
@@ -13,9 +10,9 @@ function parseDivisionData() {
         if (division_name_list.length === 0) {
             division_name_list.push(item.division)
             result.push({
-                divisionbn: item.divisionbn,
+                divisionbn: item.divisionBN,
                 division: item.division,
-                coordinates: item.divlatlong
+                coordinates: item.divisionLatLong
             })
 
             return;
@@ -27,13 +24,13 @@ function parseDivisionData() {
 
         division_name_list.push(item.division)
         result.push({
-            divisionbn: item.divisionbn,
+            divisionbn: item.divisionBN,
             division: item.division,
-            coordinates: item.divlatlong
+            coordinates: item.divisionLatLong
         })
     })
 
     return result;
 }
 
-exports.parseDivisionData = parseDivisionData;
+exports.seedDivisionData = seedDivisionData;

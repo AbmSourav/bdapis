@@ -1,14 +1,23 @@
-const { PrismaClient, Prisma } = require("@prisma/client");
-const { parseDistrictData } = require("../parsers/district");
+const { PrismaClient } = require("@prisma/client");
+const { seedDistrictData } = require("../seeders/district");
 
 const prisma = new PrismaClient()
 
 async function main() {
-    parseDistrictData.then(async (data) => {
-        await prisma.Districts.createMany({
-            "data": data
-        })
+    // Check if districts already exist
+    const existingCount = await prisma.districts.count();
+    
+    if (existingCount > 0) {
+        console.log(`Districts already exist (${existingCount} records). Skipping migration.`);
+        return;
+    }
+    
+    const districtData = await seedDistrictData();
+    await prisma.Districts.createMany({
+        "data": districtData
     })
+    
+    console.log(`Successfully inserted ${districtData.length} districts.`);
 }
 
 main()
