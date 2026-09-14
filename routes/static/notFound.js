@@ -4,7 +4,7 @@ const router = express.Router();
 
 router
     .get('*', (req, res) => {
-        res.json( { status: { code: 200, message: "nothing found" } } );
+        res.status(404).json( { status: { code: 404, message: "nothing found" } } );
     });
 
 module.exports = router;
