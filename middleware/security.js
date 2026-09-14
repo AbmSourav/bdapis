@@ -18,8 +18,8 @@ const createRateLimiter = () => {
       standardHeaders: true,
       legacyHeaders: false,
       skip: (req) => {
-        // Skip rate limiting for health checks
-        return req.path === '/health' || req.path === '/status';
+        // Skip rate limiting for health checks and crawler files
+        return req.path === '/health' || req.path === '/status' || req.path === '/robots.txt' || req.path === '/sitemap.xml';
       }
     });
   } else {
@@ -33,8 +33,8 @@ const createRateLimiter = () => {
       standardHeaders: true,
       legacyHeaders: false,
       skip: (req) => {
-        // Skip rate limiting for health checks
-        return req.path === '/health' || req.path === '/status';
+        // Skip rate limiting for health checks and crawler files
+        return req.path === '/health' || req.path === '/status' || req.path === '/robots.txt' || req.path === '/sitemap.xml';
       }
     });
   }
